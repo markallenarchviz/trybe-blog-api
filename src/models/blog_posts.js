@@ -9,7 +9,16 @@ const BlogPostsSchema = (sequelize, DataTypes) => {
     {
       tableName: 'blog_posts',
       underscored: true,
+      timestamps: false
     });
+
+BlogPostsTable.associate = (model) => {
+  BlogPostsTable.belongsTo(model.Users, {
+    foreignKey: 'userId',
+    as: 'user'
+  })
+}
+
     return BlogPostsTable;
 };
 

@@ -6,6 +6,7 @@ const PostsCategoriesSchema = (sequelize, DataTypes) => {
     {
       tableName: 'posts_categories',
       underscored: true,
+      timestamps: false
     });
     return postsCategoriesTable;
 };

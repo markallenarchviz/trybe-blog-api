@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const generateToken = require('../utils/auth');
+const { generateToken } = require('../utils/auth');
 
 const authenticate = async (email, password) => {
     const requireMsg = { status: 400, message: 'Some required fields are missing' };

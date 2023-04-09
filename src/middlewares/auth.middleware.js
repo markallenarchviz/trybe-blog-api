@@ -7,7 +7,7 @@ const authToken = (req, res, next) => {
         next();
     } catch (err) {
         const msg = { status: 401, message: 'Expired or invalid token' };
-        if (err.message === 'invalid token') throw msg;
+        if (err.message === 'invalid token' || err.message === 'jwt malformed') throw msg;
         next(err);
     }
 };

@@ -8,7 +8,6 @@ const loginRouter = require('./router/login.router');
 const userRouter = require('./router/user.router');
 
 const errorHanddler = require('./middlewares/errorHanddler');
-const authToken = require('./middlewares/auth.middleware');
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {
@@ -21,7 +20,6 @@ app.use('/login', loginRouter);
 
 app.use('/user', userRouter);
 
-app.use(authToken);
 app.use(errorHanddler);
 // ...
 

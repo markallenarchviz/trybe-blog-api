@@ -11,6 +11,16 @@ const signup = async (req, res, next) => {
     }
 };
 
+const getAllUsers = async (_req, res, next) => {
+    try {
+        const allUsers = await userService.getAllUsers()
+        return res.status(200).json(allUsers);
+    } catch (err) {
+       next(err);
+    }
+};
+
 module.exports = {
     signup,
+    getAllUsers,
 };

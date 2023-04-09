@@ -6,7 +6,7 @@ const signin = async (req, res, next) => {
         
         const token = await loginService.authenticate(email, password);
 
-        req.headers.authorization = {token};
+        req.headers.authorization = { token };
 
         return res.status(200).json({ token });
     } catch (error) {

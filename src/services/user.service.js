@@ -2,11 +2,13 @@ const { User } = require('../models');
 const { generateToken } = require('../utils/auth');
 
 const validateForm = async (displayName, email, password) => {
-    const displayNameMSG = { status: 400, message: '"displayName" length must be at least 8 characters long' };
+    const displayNameMSG = {
+        status: 400, message: '"displayName" length must be at least 8 characters long' };
     const emailMSG = { status: 400, message: '"email" must be a valid email' };
-    const passwordMSG = { status: 400, message: '"password" length must be at least 6 characters long' };
+    const passwordMSG = {
+        status: 400, message: '"password" length must be at least 6 characters long' };
 
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
 
     if (displayName.length < 8) throw displayNameMSG;
     if (!emailRegex.test(email)) throw emailMSG;
@@ -14,7 +16,6 @@ const validateForm = async (displayName, email, password) => {
 };
 
 const addForm = async (displayName, email, password, image) => {
-
     const registeredMSG = { status: 409, message: 'User already registered' };
     const user = await User.findOne({
         where: { email },
@@ -23,17 +24,15 @@ const addForm = async (displayName, email, password, image) => {
     if (user !== null) throw registeredMSG;
 
     const newUser = await User.create({ displayName, email, password, image });
-    const token = generateToken(newUser.dataValues)
+    const token = generateToken(newUser.dataValues);
     
-    return token
+    return token;
 };
 
 const getAllUsers = async () => {
     const users = await User.findAll({ attributes: { exclude: ['password'] } });
-    return users
+    return users;
 };
-
-
 
 module.exports = {
     validateForm,

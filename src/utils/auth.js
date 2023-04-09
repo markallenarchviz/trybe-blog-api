@@ -15,7 +15,6 @@ const validadateToken = (token) => {
     const InvalidMsg = { status: 401, message: 'Token not found' };
     if (!token) throw InvalidMsg;
     const isValid = jwt.verify(token, secretKey);
-    console.log(isValid);
     return isValid;
 };
 

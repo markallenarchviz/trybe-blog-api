@@ -34,8 +34,17 @@ const getAllUsers = async () => {
     return users;
 };
 
+const getUserById = async (id) => {
+    const user = await User.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+
+    const emailMSG = { status: 404, message: 'User does not exist' };
+    if (!user) throw emailMSG;
+    return user;
+};
+
 module.exports = {
     validateForm,
     addForm,
     getAllUsers,
+    getUserById,
 };

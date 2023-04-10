@@ -1,6 +1,5 @@
 const { Category } = require('../models');
 
-
 const addCategory = async (name) => {
     const msg = { status: 400, message: '"name" is required' };
     if (!name) throw msg;
@@ -9,7 +8,7 @@ const addCategory = async (name) => {
 
     return {
         id: newCategory.null,
-        name: newCategory.name
+        name: newCategory.name,
     };
 };
 

@@ -5,18 +5,18 @@ module.exports = {
       post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primatyKey: true,
+        primaryKey: true,
         references: {
-          model: 'BlogPost',
+          model: 'blog_posts',
           key: 'id'
         }
       },
       category_id: {
         type: Sequelize.INTEGER,
-        primatyKey: true,
-        primatyKey: true,
+        allowNull: false,
+        primaryKey: true,
         references: {
-          model: 'Category',
+          model: 'categories',
           key: 'id'
         }
       }

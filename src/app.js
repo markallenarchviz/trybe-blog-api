@@ -7,6 +7,7 @@ const app = express();
 const loginRouter = require('./router/login.router');
 const userRouter = require('./router/user.router');
 const categoriesRouter = require('./router/categories.router');
+const postRouter = require('./router/posts.router');
 
 const errorHanddler = require('./middlewares/errorHanddler');
 
@@ -22,6 +23,8 @@ app.use('/login', loginRouter);
 app.use('/user', userRouter);
 
 app.use('/categories', categoriesRouter);
+
+app.use('/post', postRouter);
 
 app.use(errorHanddler);
 // ...

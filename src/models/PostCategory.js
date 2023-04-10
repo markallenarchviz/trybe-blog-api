@@ -8,6 +8,23 @@ const PostCategorySchema = (sequelize, DataTypes) => {
       underscored: true,
       timestamps: false
     });
+
+PostCategoryTable.associate = ({ BlogPost, Category }) => {
+  BlogPost.belongsToMany(Category, {
+    as: 'categories',
+    foreignKey: 'postId',
+    otherKey: 'categoryId',
+    through: PostCategoryTable
+  });
+
+  Category.belongsToMany(BlogPost, {
+    as: 'posts',
+    foreignKey: 'categoryId',
+    otherKey: 'postId',
+    through: PostCategoryTable
+  });
+}
+
     return PostCategoryTable;
 };
 

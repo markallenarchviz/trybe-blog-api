@@ -2,6 +2,7 @@ const userRouter = require('express').Router();
 const postsController = require('../controller/post.controller');
 const authToken = require('../middlewares/auth.middleware');
 
-userRouter.post('/', authToken, postsController.addPost);
+userRouter.use(authToken);
+userRouter.post('/', postsController.addPost);
 
 module.exports = userRouter;

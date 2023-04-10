@@ -1,6 +1,6 @@
 const { validadateToken } = require('../utils/auth');
 
-const authToken = (req, res, next) => {
+const authToken = (req, _res, next) => {
     try {
         const { authorization } = req.headers;
         validadateToken(authorization);
